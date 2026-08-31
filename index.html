@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Asilo de Vitória - Corrente de Carinho 💖</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- Header principal -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-icon">💖</div>
+        <div class="brand-text">
+          <h1>Asilo de Vitória</h1>
+          <p>Corrente de Carinho</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="soundToggle" class="icon-btn" title="Alternar Som" aria-label="Som">
+          <span id="soundIcon">🔊</span>
+        </button>
+        <a href="https://asilodevitoria.org.br/doacao/doe-um-pouquinho-transforme-o-ano-inteiro/" target="_blank" rel="noopener noreferrer" class="donate-btn-header">
+          ❤️ Doe Agora
+        </a>
+      </div>
+    </header>
+
+    <!-- Banner de impacto social topo -->
+    <div class="impact-bar">
+      <span>✨ <em>"Doe um pouquinho, transforme o ano inteiro. Seu amor deixa marcas."</em> ✨</span>
+    </div>
+
+    <!-- Tela Principal / Menu de Seleção -->
+    <main id="mainContainer" class="main-container">
+      <section id="menuScreen" class="screen active">
+        <div class="hero-card">
+          <div class="hero-badge">Campanha Oficial de Apoio</div>
+          <h2>Espalhe Amor e Cuidados aos Idosos do Asilo de Vitória</h2>
+          <p class="hero-description">
+            Ajude-nos a levar alimentação, medicamentos, agasalhos e muito afeto para nossos vovôs e vovÓs. Escolha um modo de jogo e faça parte dessa corrente!
+          </p>
+
+          <div class="game-modes">
+            <div class="mode-card" id="startCatchMode">
+              <div class="mode-icon">🧺</div>
+              <h3>Chuva de Carinho</h3>
+              <p>Mova a cesta para coletar itens de amor, alimentos e remédios caindo do céu. Evite as nuvens de tristeza!</p>
+              <button class="play-btn">Jogar Chuva de Carinho ▶</button>
+            </div>
+
+            <div class="mode-card" id="startMemoryMode">
+              <div class="mode-icon">🃏</div>
+              <h3>Memórias de Afeto</h3>
+              <p>Encontre os pares de memórias e momentos felizes vividos diariamente pelos idosos no Asilo de Vitória.</p>
+              <button class="play-btn secondary">Jogar Memórias ▶</button>
+            </div>
+          </div>
+
+          <div class="quick-donation-box">
+            <h3>🤝 Seu gesto transforma vidas!</h3>
+            <p>O Asilo de Vitória atende dezenas de idosos em situação de vulnerabilidade com assistência 24h.</p>
+            <div class="quick-donation-buttons">
+              <a href="https://asilodevitoria.org.br/doacao/doe-um-pouquinho-transforme-o-ano-inteiro/" target="_blank" class="btn-primary">
+                🎁 Doar Qualquer Valor no Site Oficial
+              </a>
+              <button id="copyPixMenuBtn" class="btn-pix">
+                📋 Copiar Chave Pix Oficial
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tela do Jogo: Chuva de Carinho (Canvas Arcade) -->
+      <section id="catchGameScreen" class="screen">
+        <div class="hud">
+          <div class="hud-item">
+            <span class="hud-label">Pontos</span>
+            <span id="catchScore" class="hud-value">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Felicidade</span>
+            <div class="progress-bar-container">
+              <div id="happinessBar" class="progress-bar-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Nível</span>
+            <span id="catchLevel" class="hud-value">1</span>
+          </div>
+          <button id="pauseCatchBtn" class="hud-btn">⏸️ Pausa</button>
+        </div>
+
+        <div class="canvas-wrapper">
+          <canvas id="catchCanvas" width="600" height="700"></canvas>
+          <div id="touchInstructions" class="touch-instructions">
+            👆 Arraste na tela para mover a Cesta de Carinho
+          </div>
+        </div>
+
+        <div class="game-controls">
+          <button id="backToMenuBtn1" class="btn-secondary">🏠 Menu Principal</button>
+          <a href="https://asilodevitoria.org.br/doacao/doe-um-pouquinho-transforme-o-ano-inteiro/" target="_blank" class="btn-donate-inline">
+            💖 Transforme seu jogo em doação real
+          </a>
+        </div>
+      </section>
+
+      <!-- Tela do Jogo: Memórias de Afeto (Jogo da Memória) -->
+      <section id="memoryGameScreen" class="screen">
+        <div class="hud">
+          <div class="hud-item">
+            <span class="hud-label">Pares Encontrados</span>
+            <span id="memoryPairs" class="hud-value">0 / 8</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Jogadas</span>
+            <span id="memoryMoves" class="hud-value">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Tempo</span>
+            <span id="memoryTimer" class="hud-value">00:00</span>
+          </div>
+        </div>
+
+        <div class="memory-board-wrapper">
+          <div id="memoryGrid" class="memory-grid"></div>
+        </div>
+
+        <div class="game-controls">
+          <button id="backToMenuBtn2" class="btn-secondary">🏠 Menu Principal</button>
+          <button id="restartMemoryBtn" class="btn-secondary">🔄 Reiniciar</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal de Resultado / Doação -->
+    <div id="resultModal" class="modal-overlay">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div id="resultBadgeIcon" class="result-badge-icon">🏆</div>
+          <h2 id="resultTitle">Parabéns, Amigo do Asilo!</h2>
+          <p id="resultSubtitle">Você encheu o dia dos nossos idosos de alegria!</p>
+        </div>
+
+        <div class="result-body">
+          <div class="score-summary-box">
+            <div class="summary-item">
+              <span class="summary-label">Pontuação Final</span>
+              <span id="finalScore" class="summary-value">0</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Título Conquistado</span>
+              <span id="playerTitle" class="summary-value highlight">Guardião do Carinho</span>
+            </div>
+          </div>
+
+          <div class="impact-message-box">
+            <h3>💌 A Sua Ajuda Faz Toda a Diferença</h3>
+            <p id="impactText">
+              No Asilo de Vitória, cuidamos diariamente de idosos que precisam de alimentação balanceada, médicos, fisioterapia, medicamentos e muito afeto.
+            </p>
+          </div>
+
+          <!-- Tabela de Valores de Impacto -->
+          <div class="donation-tiers">
+            <h4>Veja o que a sua doação real realiza:</h4>
+            <div class="tiers-grid">
+              <div class="tier-card">
+                <span class="tier-price">R$ 15</span>
+                <span class="tier-desc">Café da tarde quentinho com broas e frutas ☕</span>
+              </div>
+              <div class="tier-card">
+                <span class="tier-price">R$ 30</span>
+                <span class="tier-desc">Produtos de higiene e conforto diário 🧴</span>
+              </div>
+              <div class="tier-card highlight-tier">
+                <span class="tier-price">R$ 50</span>
+                <span class="tier-desc">Medicamentos e fraldas geriátricas essenciais 🩺</span>
+              </div>
+              <div class="tier-card">
+                <span class="tier-price">R$ 100+</span>
+                <span class="tier-desc">Cuidados de saúde e infraestrutura do ano inteiro ❤️</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ações Finais do Modal -->
+          <div class="modal-actions">
+            <a href="https://asilodevitoria.org.br/doacao/doe-um-pouquinho-transforme-o-ano-inteiro/" target="_blank" rel="noopener noreferrer" class="btn-donate-modal">
+              ❤️ FAZER DOAÇÃO NO SITE OFICIAL
+            </a>
+            
+            <div class="secondary-actions-row">
+              <button id="copyPixModalBtn" class="btn-pix-modal">
+                📋 Copiar Chave Pix
+              </button>
+              <button id="shareWhatsAppBtn" class="btn-whatsapp-modal">
+                💬 Compartilhar no WhatsApp
+              </button>
+            </div>
+
+            <button id="closeModalBtn" class="btn-restart-modal">
+              🔄 Jogar Novamente
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toastNotification" class="toast">
+      Chave Pix copiada com sucesso! Obrigado pelo apoio! ❤️
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>
+        Jogo educativo e beneficente dedicado ao <strong>Asilo de Vitória</strong> (Espírito Santo).
+      </p>
+      <p>
+        Saiba mais e faça sua contribuição oficial em <a href="https://asilodevitoria.org.br/doacao/doe-um-pouquinho-transforme-o-ano-inteiro/" target="_blank">asilodevitoria.org.br</a>.
+      </p>
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

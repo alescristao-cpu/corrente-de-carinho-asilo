@@ -1,0 +1,863 @@
+/* ==========================================================================
+   Asilo de Vitória - Corrente de Carinho CSS
+   Visual identity: Red/Burgundy (#C20C2D, #730015), Cream (#FFF9F8), Gold (#FFB800)
+   ========================================================================== */
+
+:root {
+  --primary: #C20C2D;
+  --primary-dark: #730015;
+  --primary-light: #FF5370;
+  --accent-gold: #FFB800;
+  --bg-warm: #FFF8F6;
+  --card-bg: #FFFFFF;
+  --text-dark: #2B181C;
+  --text-muted: #6E5B60;
+  --success: #28A745;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 4px 12px rgba(115, 0, 21, 0.08);
+  --shadow-md: 0 8px 24px rgba(115, 0, 21, 0.12);
+  --shadow-lg: 0 16px 36px rgba(115, 0, 21, 0.2);
+  --font-heading: 'Fredoka', 'Nunito', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg-warm);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+#app {
+  width: 100%;
+  max-width: 800px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  font-size: 28px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  animation: pulse-heart 2s infinite ease-in-out;
+}
+
+@keyframes pulse-heart {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.brand-text h1 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+}
+
+.brand-text p {
+  font-size: 12px;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+.donate-btn-header {
+  background: var(--accent-gold);
+  color: var(--primary-dark);
+  font-weight: 800;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(255, 184, 0, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.donate-btn-header:hover {
+  transform: translateY(-2px);
+  background: #FFC425;
+}
+
+/* Impact Bar */
+.impact-bar {
+  background: #FFF0ED;
+  color: var(--primary-dark);
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  border-bottom: 1px solid #FFD9D2;
+}
+
+/* Main Container Screens */
+.main-container {
+  flex: 1;
+  padding: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* Hero Card (Menu) */
+.hero-card {
+  background: #FFFDFD;
+  border: 2px solid #FFE4E0;
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-badge {
+  display: inline-block;
+  background: #FFEBE8;
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.hero-card h2 {
+  font-family: var(--font-heading);
+  color: var(--primary-dark);
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.hero-description {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* Game Modes Selection Grid */
+.game-modes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  .game-modes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mode-card {
+  background: #FFFFFF;
+  border: 2px solid #F3E5E7;
+  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.mode-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.mode-icon {
+  font-size: 42px;
+  background: #FFF0ED;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mode-card h3 {
+  font-family: var(--font-heading);
+  color: var(--primary-dark);
+  font-size: 18px;
+}
+
+.mode-card p {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.play-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #FFFFFF;
+  border: none;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(194, 12, 45, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.play-btn.secondary {
+  background: linear-gradient(135deg, #FF6B4A 0%, #D93B18 100%);
+}
+
+.play-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(194, 12, 45, 0.4);
+}
+
+/* Quick Donation Box */
+.quick-donation-box {
+  background: linear-gradient(135deg, #FFF3F0 0%, #FFEBE6 100%);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  border: 1px dashed var(--primary-light);
+}
+
+.quick-donation-box h3 {
+  color: var(--primary-dark);
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.quick-donation-box p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.quick-donation-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-pix {
+  background: #00BDAE;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-pix:hover {
+  background: #00998C;
+}
+
+/* HUD Header (In-Game) */
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FFF3F0;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid #FFE4E0;
+}
+
+.hud-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hud-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.hud-value {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.progress-bar-container {
+  width: 120px;
+  height: 14px;
+  background: #EAD0CD;
+  border-radius: 7px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FF6B4A, var(--primary));
+  transition: width 0.3s ease;
+  border-radius: 7px;
+}
+
+.hud-btn {
+  background: #FFFFFF;
+  border: 1px solid #D8C0BE;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.hud-btn:hover {
+  background: #F5EAE8;
+}
+
+/* Canvas Wrapper */
+.canvas-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#catchCanvas {
+  background: linear-gradient(180deg, #EBF5FF 0%, #FFF5F2 70%, #FFEBE6 100%);
+  border-radius: var(--radius-md);
+  border: 3px solid #FFE0DA;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+  max-width: 100%;
+  height: auto;
+  touch-action: none;
+}
+
+.touch-instructions {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Memory Game Board */
+.memory-board-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 560px;
+  perspective: 1000px;
+}
+
+@media (max-width: 480px) {
+  .memory-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+}
+
+.memory-card {
+  aspect-ratio: 1;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+}
+
+.memory-card.flipped, .memory-card.matched {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-back {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  border: 3px solid #FFFFFF;
+}
+
+.card-back-icon {
+  font-size: 32px;
+  opacity: 0.9;
+}
+
+.card-front {
+  background: #FFFFFF;
+  border: 3px solid #FFE0DA;
+  transform: rotateY(180deg);
+  padding: 0;
+  position: relative;
+}
+
+.card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) - 3px);
+  display: block;
+}
+
+.card-label-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(115, 0, 21, 0.88);
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 800;
+  text-align: center;
+  padding: 3px 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+}
+
+.special-logo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #FFF0ED 0%, #FFE0DA 100%);
+  padding: 8px;
+}
+
+.memory-card.matched .card-front {
+  border-color: #28A745;
+  box-shadow: 0 0 12px rgba(40, 167, 69, 0.5);
+}
+
+.card-emoji {
+  font-size: 36px;
+  margin-bottom: 4px;
+}
+
+.card-text {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-dark);
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* In-Game Footer Controls */
+.game-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  background: #F0E6E5;
+  color: var(--text-dark);
+  border: none;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #E2D3D2;
+}
+
+.btn-donate-inline {
+  background: var(--accent-gold);
+  color: var(--primary-dark);
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-size: 13px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(255, 184, 0, 0.3);
+}
+
+/* Modal Popup */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(43, 24, 28, 0.75);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 16px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: white;
+  padding: 24px;
+  text-align: center;
+}
+
+.result-badge-icon {
+  font-size: 52px;
+  margin-bottom: 8px;
+}
+
+.modal-header h2 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+}
+
+.modal-header p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.result-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.score-summary-box {
+  display: flex;
+  justify-content: space-around;
+  background: #FFF3F0;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid #FFE0DA;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.summary-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+.summary-value {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.summary-value.highlight {
+  color: var(--primary);
+  font-size: 18px;
+}
+
+.impact-message-box {
+  background: #FFFDF0;
+  border-left: 4px solid var(--accent-gold);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+}
+
+.impact-message-box h3 {
+  font-size: 14px;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+}
+
+.impact-message-box p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Donation Tiers Grid */
+.donation-tiers h4 {
+  font-size: 13px;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+
+.tiers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.tier-card {
+  background: #F9F3F2;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid #EAE0DF;
+}
+
+.tier-card.highlight-tier {
+  background: #FFEBE6;
+  border-color: var(--primary-light);
+}
+
+.tier-price {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.tier-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+/* Modal Action Buttons */
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.btn-donate-modal {
+  background: linear-gradient(135deg, #28A745 0%, #1E7E34 100%);
+  color: white;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 800;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(40, 167, 69, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.btn-donate-modal:hover {
+  transform: scale(1.02);
+}
+
+.secondary-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.btn-pix-modal {
+  background: #00BDAE;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-whatsapp-modal {
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-restart-modal {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--text-dark);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1000;
+  pointer-events: none;
+  text-align: center;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Footer */
+.footer {
+  background: #F8F1F0;
+  padding: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid #EFE4E2;
+}
+
+.footer a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
