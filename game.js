@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Asilo de Vitória - Corrente de Carinho Game Logic
+   Obra Social Cristo Rei - Jogo do Orfanato Game Logic
    - Web Audio API Sound Engine
    - Mode 1: Chuva de Carinho (HTML5 Canvas Arcade)
    - Mode 2: Memórias de Afeto (3D Flip Memory Card Game)
@@ -9,15 +9,15 @@
 (function () {
   'use strict';
 
-  // Chave Pix Oficial do Asilo de Vitória
-  const PIX_KEY = "27.126.790/0001-38"; // CNPJ oficial do Asilo de Vitória
-  const DONATION_URL = "https://asilodevitoria.org.br/doacao/doe-um-pouquinho-transforme-o-ano-inteiro/";
+  // Chave Pix Oficial da Obra Social Cristo Rei
+  const PIX_KEY = ""; // CNPJ oficial da Obra Social Cristo Rei
+  const DONATION_URL = "https://obrasocialcristorei.org.br/doe/";
 
   // --- AUDIO SYNTHESIZER (Web Audio API) ---
   class SoundEngine {
     constructor() {
       this.ctx = null;
-      this.muted = localStorage.getItem('asilo_sound_muted') === 'true';
+      this.muted = localStorage.getItem('orfanato_sound_muted') === 'true';
       this.updateIcon();
     }
 
@@ -32,7 +32,7 @@
 
     toggle() {
       this.muted = !this.muted;
-      localStorage.setItem('asilo_sound_muted', this.muted);
+      localStorage.setItem('orfanato_sound_muted', this.muted);
       this.updateIcon();
       if (!this.muted) {
         this.playCollect();
@@ -170,18 +170,22 @@
   const screens = {
     menu: document.getElementById('menuScreen'),
     catchGame: document.getElementById('catchGameScreen'),
-    memoryGame: document.getElementById('memoryGameScreen')
+    memoryGame: document.getElementById('memoryGameScreen'),
+    jumpGame: document.getElementById('jumpGameScreen'),
+    balloonGame: document.getElementById('balloonGameScreen')
   };
 
   const buttons = {
     startCatch: document.getElementById('startCatchMode'),
     startMemory: document.getElementById('startMemoryMode'),
+    startJump: document.getElementById('startJumpMode'),
+    startBalloon: document.getElementById('startBalloonMode'),
     soundToggle: document.getElementById('soundToggle'),
-    copyPixMenu: document.getElementById('copyPixMenuBtn'),
-    copyPixModal: document.getElementById('copyPixModalBtn'),
     shareWhatsApp: document.getElementById('shareWhatsAppBtn'),
     backToMenu1: document.getElementById('backToMenuBtn1'),
     backToMenu2: document.getElementById('backToMenuBtn2'),
+    backToMenu3: document.getElementById('backToMenuBtn3'),
+    backToMenu4: document.getElementById('backToMenuBtn4'),
     restartMemory: document.getElementById('restartMemoryBtn'),
     pauseCatch: document.getElementById('pauseCatchBtn'),
     closeModal: document.getElementById('closeModalBtn')
@@ -227,8 +231,8 @@
 
   function shareWhatsApp(score, mode) {
     const text = encodeURIComponent(
-      `💖 Fiz ${score} pontos no jogo "Corrente de Carinho" apoiando o Asilo de Vitória (${mode})!\n\n` +
-      `Doe um pouquinho e transforme o ano inteiro dos vovôs e vovás! Venha jogar e doar você também:\n` +
+      `💖 Fiz ${score} pontos no Jogo do Orfanato apoiando a Obra Social Cristo Rei (${mode})!\n\n` +
+      `Doe um pouquinho e transforme o ano inteiro dos crianças e adolescentes! Venha jogar e doar você também:\n` +
       DONATION_URL
     );
     window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
@@ -244,10 +248,10 @@
 
     finalScoreEl.textContent = score;
 
-    let title = "Amigo dos Idosos";
+    let title = "Amigo dos Crianças";
     let badge = "🌟";
     if (score >= 300) {
-      title = "Embaixador do Asilo de Vitória";
+      title = "Embaixador da Obra Social Cristo Rei";
       badge = "🏆";
     } else if (score >= 150) {
       title = "Guardião do Carinho";
@@ -261,7 +265,7 @@
     if (extraMsg) {
       impactTextEl.textContent = extraMsg;
     } else {
-      impactTextEl.textContent = "No Asilo de Vitória, cuidamos diariamente de dezenas de idosos que dependem da nossa união para ter alimentação nutritiva, medicamentos, fisioterapia e carinho!";
+      impactTextEl.textContent = "Na Obra Social Cristo Rei, cuidamos diariamente de dezenas de crianças que dependem da nossa união para ter alimentação nutritiva, medicamentos, fisioterapia e carinho!";
     }
 
     // Configurar evento do botão de compartilhamento com a pontuação atual
@@ -528,7 +532,7 @@
         openResultModal(
           this.score,
           "Chuva de Carinho",
-          "A barra de felicidade acabou, mas a sua solidariedade pode reacender o sorriso dos idosos do Asilo de Vitória!"
+          "A barra de felicidade acabou, mas a sua solidariedade pode reacender o sorriso dos crianças da Obra Social Cristo Rei!"
         );
       }
     }
@@ -646,14 +650,14 @@
       this.timerInterval = null;
 
       this.cardData = [
-        { img: 'images/foto1.png', emoji: '🤗', name: 'Abraço Afetivo' },
-        { img: 'images/foto2.png', emoji: '😊', name: 'Sorriso Radiante' },
-        { img: 'images/foto3.png', emoji: '🌸', name: 'Oficina de Flores' },
-        { img: 'images/foto4.png', emoji: '📖', name: 'Atividades e Jogos' },
-        { img: 'images/foto5.png', emoji: '💙', name: 'Vovôs do Asilo' },
-        { img: 'images/foto6.png', emoji: '📝', name: 'Momentos Especiais' },
-        { img: 'images/foto7.png', emoji: '🩺', name: 'Equipe de Cuidados' },
-        { img: null, emoji: '💖', name: 'Asilo de Vitória' }
+        { img: 'images/img1.jpg', emoji: '🎁', name: 'Alegria e Presentes' },
+        { img: 'images/img2.jpg', emoji: '🍲', name: 'Refeição com Amor' },
+        { img: 'images/img3.jpg', emoji: '🧩', name: 'Jogos e Aprendizado' },
+        { img: 'images/img4.jpg', emoji: '📚', name: 'Cantinho da Leitura' },
+        { img: 'images/img5.jpg', emoji: '🥰', name: 'Sorrisos e Carinho' },
+        { img: 'images/logo.png', emoji: '💙', name: 'Cristo Rei' },
+        { img: 'images/img6.jpg', emoji: '📸', name: 'História e Memória' },
+        { img: 'images/img7.jpg', emoji: '🏗️', name: 'Oficina Criativa' }
       ];
     }
 
@@ -699,8 +703,17 @@
 
         let frontContent = '';
         if (item.img) {
+          const fileName = item.img.split('/').pop();
           frontContent = `
-            <img src="${item.img}" alt="${item.name}" class="card-photo" />
+            <img src="${item.img}" alt="${item.name}" class="card-photo" onerror="
+              if(!this.dataset.tried){
+                this.dataset.tried='1';
+                this.src='${fileName}';
+              } else if(this.dataset.tried==='1'){
+                this.dataset.tried='2';
+                this.src='./images/${fileName}';
+              }
+            " />
             <div class="card-label-overlay">${item.emoji} ${item.name}</div>
           `;
         } else {
@@ -773,7 +786,7 @@
           openResultModal(
             finalScore,
             "Memórias de Afeto",
-            `Você completou o jogo em ${this.moves} jogadas e ${this.timerEl.textContent}! Cada par de memória reforça os momentos felizes proporcionados aos idosos no Asilo de Vitória.`
+            `Você completou o jogo em ${this.moves} jogadas e ${this.timerEl.textContent}! Cada par de memória reforça os momentos felizes proporcionados aos crianças na Obra Social Cristo Rei.`
           );
         }, 500);
       }
@@ -794,8 +807,368 @@
     }
   }
 
+  
+  class JumpGame {
+    constructor() {
+      this.canvas = document.getElementById('jumpCanvas');
+      if(!this.canvas) return;
+      this.ctx = this.canvas.getContext('2d');
+      this.scoreEl = document.getElementById('jumpScore');
+      this.phaseEl = document.getElementById('jumpPhase');
+      
+      this.running = false;
+      this.score = 0;
+      this.speed = 5;
+      
+      this.player = {
+        x: 50,
+        y: 200,
+        width: 40,
+        height: 40,
+        vy: 0,
+        gravity: 0.8,
+        jumpStrength: -14,
+        isGrounded: false,
+        emoji: '👶'
+      };
+      
+      this.obstacles = [];
+      this.spawnTimer = 0;
+      this.nextSpawn = 100;
+      
+      this.bindEvents();
+    }
+    
+    bindEvents() {
+      const jump = (e) => {
+        if(e) e.preventDefault();
+        if(!this.running) return;
+        if(this.player.isGrounded) {
+          this.player.vy = this.player.jumpStrength;
+          this.player.isGrounded = false;
+          sound.playCardFlip();
+        }
+      };
+      
+      window.addEventListener('keydown', (e) => {
+        if(e.code === 'Space' || e.code === 'ArrowUp') jump(e);
+      });
+      
+      if(this.canvas) {
+        this.canvas.addEventListener('touchstart', jump, {passive: false});
+        this.canvas.addEventListener('mousedown', jump);
+      }
+    }
+    
+    start() {
+      this.running = true;
+      this.score = 0;
+      this.speed = 5;
+      this.obstacles = [];
+      this.spawnTimer = 0;
+      this.nextSpawn = 100;
+      this.player.y = this.canvas.height - 50 - this.player.height;
+      this.player.vy = 0;
+      this.player.isGrounded = true;
+      this.player.emoji = '👶';
+      this.updateHUD();
+      
+      this.lastTime = performance.now();
+      requestAnimationFrame((t) => this.loop(t));
+    }
+    
+    spawnObstacle() {
+      const types = ['🚧', '🪨', '🛑'];
+      const type = types[Math.floor(Math.random() * types.length)];
+      this.obstacles.push({
+        x: this.canvas.width,
+        y: this.canvas.height - 50 - 30, // 50 ground height, 30 obs height
+        width: 30,
+        height: 30,
+        emoji: type
+      });
+    }
+    
+    update() {
+      this.player.vy += this.player.gravity;
+      this.player.y += this.player.vy;
+      
+      const groundY = this.canvas.height - 50;
+      if (this.player.y + this.player.height >= groundY) {
+        this.player.y = groundY - this.player.height;
+        this.player.vy = 0;
+        this.player.isGrounded = true;
+      }
+      
+      for (let i = this.obstacles.length - 1; i >= 0; i--) {
+        let obs = this.obstacles[i];
+        obs.x -= this.speed;
+        
+        if (
+          this.player.x < obs.x + obs.width - 5 &&
+          this.player.x + this.player.width - 5 > obs.x &&
+          this.player.y < obs.y + obs.height - 5 &&
+          this.player.y + this.player.height - 5 > obs.y
+        ) {
+          this.running = false;
+          sound.playHurt();
+          setTimeout(() => {
+             openResultModal(Math.floor(this.score), "Jornada da Vida", "Cada obstáculo superado representa um passo na jornada de nossas crianças. Sua doação ajuda a pavimentar esse caminho!");
+          }, 300);
+          return;
+        }
+        
+        if (obs.x + obs.width < 0) {
+          this.obstacles.splice(i, 1);
+        }
+      }
+      
+      this.spawnTimer++;
+      if (this.spawnTimer >= this.nextSpawn) {
+        this.spawnObstacle();
+        this.spawnTimer = 0;
+        this.nextSpawn = Math.max(50, 100 - this.speed * 2) + Math.random() * 50;
+      }
+      
+      this.score += 0.1;
+      this.speed = 5 + (this.score / 200);
+      
+      let newEmoji = '👶';
+      if (this.score > 1000) newEmoji = '👨‍🎓';
+      else if (this.score > 600) newEmoji = '🧑';
+      else if (this.score > 300) newEmoji = '👦';
+      
+      if(newEmoji !== this.player.emoji) {
+         this.player.emoji = newEmoji;
+         sound.playVictory();
+         this.player.width = 40 + (this.score > 300 ? 5 : 0) + (this.score > 600 ? 5 : 0);
+         this.player.height = this.player.width;
+      }
+      
+      this.updateHUD();
+    }
+    
+    draw() {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      
+      this.ctx.fillStyle = '#A3E4D7';
+      this.ctx.fillRect(0, this.canvas.height - 50, this.canvas.width, 50);
+      
+      this.ctx.font = `${this.player.height}px Arial`;
+      this.ctx.textAlign = 'center';
+      this.ctx.textBaseline = 'bottom';
+      this.ctx.fillText(this.player.emoji, this.player.x + this.player.width/2, this.player.y + this.player.height);
+      
+      this.ctx.font = '30px Arial';
+      this.obstacles.forEach(obs => {
+        this.ctx.fillText(obs.emoji, obs.x + obs.width/2, obs.y + obs.height);
+      });
+    }
+    
+    updateHUD() {
+      this.scoreEl.textContent = Math.floor(this.score);
+      this.phaseEl.textContent = this.player.emoji;
+    }
+    
+    loop(timestamp) {
+      if (!this.running) return;
+      this.update();
+      this.draw();
+      requestAnimationFrame((t) => this.loop(t));
+    }
+  }
+
+
+  class BalloonGame {
+    constructor() {
+      this.canvas = document.getElementById('balloonCanvas');
+      if(!this.canvas) return;
+      this.ctx = this.canvas.getContext('2d');
+      this.scoreEl = document.getElementById('balloonScore');
+      this.timeEl = document.getElementById('balloonTime');
+      
+      this.running = false;
+      this.score = 0;
+      this.timeLeft = 30;
+      
+      this.balloons = [];
+      this.particles = [];
+      this.spawnTimer = 0;
+      this.nextSpawn = 60;
+      
+      this.emojis = ['🎈', '🌟', '🧸', '🎨', '⚽'];
+      
+      this.bindEvents();
+    }
+    
+    bindEvents() {
+      const handleTap = (e) => {
+        if(!this.running) return;
+        e.preventDefault();
+        
+        let clientX, clientY;
+        if(e.touches && e.touches.length > 0) {
+          clientX = e.touches[0].clientX;
+          clientY = e.touches[0].clientY;
+        } else {
+          clientX = e.clientX;
+          clientY = e.clientY;
+        }
+        
+        const rect = this.canvas.getBoundingClientRect();
+        const scaleX = this.canvas.width / rect.width;
+        const scaleY = this.canvas.height / rect.height;
+        const x = (clientX - rect.left) * scaleX;
+        const y = (clientY - rect.top) * scaleY;
+        
+        for(let i = this.balloons.length - 1; i >= 0; i--) {
+          const b = this.balloons[i];
+          const dist = Math.hypot(b.x - x, b.y - y);
+          if(dist <= b.radius * 1.5) {
+             this.score += 10;
+             sound.playCoin();
+             this.createParticles(b.x, b.y);
+             this.balloons.splice(i, 1);
+             this.updateHUD();
+             break;
+          }
+        }
+      };
+      
+      if(this.canvas) {
+        this.canvas.addEventListener('touchstart', handleTap, {passive: false});
+        this.canvas.addEventListener('mousedown', handleTap);
+      }
+    }
+    
+    start() {
+      this.running = true;
+      this.score = 0;
+      this.timeLeft = 30;
+      this.balloons = [];
+      this.particles = [];
+      this.updateHUD();
+      
+      this.lastTime = performance.now();
+      
+      this.timerInterval = setInterval(() => {
+        this.timeLeft--;
+        this.updateHUD();
+        if(this.timeLeft <= 0) {
+           this.endGame();
+        }
+      }, 1000);
+      
+      requestAnimationFrame((t) => this.loop(t));
+    }
+    
+    endGame() {
+       this.running = false;
+       clearInterval(this.timerInterval);
+       setTimeout(() => {
+          openResultModal(this.score, "Balões dos Sonhos", "Você realizou " + (this.score/10) + " sonhos! A Obra Social Cristo Rei trabalha para que os sonhos decolem.");
+       }, 500);
+    }
+    
+    spawnBalloon() {
+      const type = this.emojis[Math.floor(Math.random() * this.emojis.length)];
+      const radius = 30 + Math.random() * 15;
+      const x = radius + Math.random() * (this.canvas.width - radius * 2);
+      this.balloons.push({
+        x: x,
+        y: this.canvas.height + radius,
+        radius: radius,
+        speed: 2 + Math.random() * 3,
+        wobble: Math.random() * Math.PI * 2,
+        wobbleSpeed: 0.02 + Math.random() * 0.05,
+        emoji: type
+      });
+    }
+    
+    createParticles(x, y) {
+      for(let i=0; i<6; i++) {
+         this.particles.push({
+            x: x,
+            y: y,
+            vx: (Math.random() - 0.5) * 10,
+            vy: (Math.random() - 0.5) * 10,
+            life: 1.0
+         });
+      }
+    }
+    
+    update() {
+      this.spawnTimer++;
+      if(this.spawnTimer >= this.nextSpawn) {
+        this.spawnBalloon();
+        this.spawnTimer = 0;
+        this.nextSpawn = Math.max(15, 40 - (30 - this.timeLeft));
+      }
+      
+      for(let i = this.balloons.length - 1; i >= 0; i--) {
+         let b = this.balloons[i];
+         b.y -= b.speed;
+         b.wobble += b.wobbleSpeed;
+         b.x += Math.sin(b.wobble) * 1.5;
+         
+         if(b.y < -b.radius) {
+            this.balloons.splice(i, 1);
+         }
+      }
+      
+      for(let i = this.particles.length - 1; i >= 0; i--) {
+         let p = this.particles[i];
+         p.x += p.vx;
+         p.y += p.vy;
+         p.life -= 0.05;
+         if(p.life <= 0) this.particles.splice(i, 1);
+      }
+    }
+    
+    draw() {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      
+      this.ctx.textAlign = 'center';
+      this.ctx.textBaseline = 'middle';
+      this.balloons.forEach(b => {
+         this.ctx.beginPath();
+         this.ctx.moveTo(b.x, b.y + b.radius * 0.8);
+         this.ctx.lineTo(b.x + Math.sin(b.wobble)*5, b.y + b.radius * 2.5);
+         this.ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+         this.ctx.lineWidth = 2;
+         this.ctx.stroke();
+         
+         this.ctx.font = Math.floor(b.radius * 1.8) + 'px Arial';
+         this.ctx.fillText(b.emoji, b.x, b.y);
+      });
+      
+      this.ctx.fillStyle = '#FFC107';
+      this.particles.forEach(p => {
+         this.ctx.globalAlpha = Math.max(0, p.life);
+         this.ctx.beginPath();
+         this.ctx.arc(p.x, p.y, 4, 0, Math.PI*2);
+         this.ctx.fill();
+      });
+      this.ctx.globalAlpha = 1.0;
+    }
+    
+    updateHUD() {
+      this.scoreEl.textContent = this.score;
+      this.timeEl.textContent = this.timeLeft + 's';
+    }
+    
+    loop(timestamp) {
+      if (!this.running) return;
+      this.update();
+      this.draw();
+      requestAnimationFrame((t) => this.loop(t));
+    }
+  }
+
   // --- INICIALIZAÇÃO DOS INSTÂNCIAS ---
   const catchGame = new CatchGame();
+  const jumpGame = new JumpGame();
+  const balloonGame = new BalloonGame();
   const memoryGame = new MemoryGame();
 
   // --- EVENT LISTENERS GERAIS ---
@@ -813,16 +1186,37 @@
     });
   }
 
+  if (buttons.startJump) {
+    buttons.startJump.addEventListener('click', () => {
+      showScreen('jumpGame');
+      jumpGame.start();
+    });
+  }
+
+  if (buttons.startBalloon) {
+    buttons.startBalloon.addEventListener('click', () => {
+      showScreen('balloonGame');
+      balloonGame.start();
+    });
+  }
+
+  if (buttons.backToMenu3) {
+    buttons.backToMenu3.addEventListener('click', () => {
+      jumpGame.running = false;
+      showScreen('menu');
+    });
+  }
+
+  if (buttons.backToMenu4) {
+    buttons.backToMenu4.addEventListener('click', () => {
+      balloonGame.running = false;
+      clearInterval(balloonGame.timerInterval);
+      showScreen('menu');
+    });
+  }
+
   if (buttons.soundToggle) {
     buttons.soundToggle.addEventListener('click', () => sound.toggle());
-  }
-
-  if (buttons.copyPixMenu) {
-    buttons.copyPixMenu.addEventListener('click', copyPixKey);
-  }
-
-  if (buttons.copyPixModal) {
-    buttons.copyPixModal.addEventListener('click', copyPixKey);
   }
 
   if (buttons.backToMenu1) {
@@ -849,6 +1243,22 @@
     buttons.closeModal.addEventListener('click', () => {
       modal.classList.remove('active');
       showScreen('menu');
+    });
+  }
+
+  const aboutModal = document.getElementById('aboutOrfanatoModal');
+  const aboutBtn = document.getElementById('aboutOrfanatoBtn');
+  const closeAboutBtn = document.getElementById('closeAboutModalBtn');
+
+  if (aboutBtn && aboutModal) {
+    aboutBtn.addEventListener('click', () => {
+      aboutModal.classList.add('active');
+    });
+  }
+
+  if (closeAboutBtn && aboutModal) {
+    closeAboutBtn.addEventListener('click', () => {
+      aboutModal.classList.remove('active');
     });
   }
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Asilo de Vitória - Corrente de Carinho 💖</title>
+  <title>Obra Social Cristo Rei - Jogo do Orfanato 💖</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,18 +14,21 @@
     <!-- Header principal -->
     <header class="header">
       <div class="brand">
-        <div class="logo-icon">💖</div>
+        <img src="images/logo.png" class="logo-icon-img" alt="Logo">
         <div class="brand-text">
-          <h1>Asilo de Vitória</h1>
-          <p>Corrente de Carinho</p>
+          <h1>Obra Social Cristo Rei</h1>
+          <p>Jogo do Orfanato</p>
         </div>
       </div>
 
       <div class="header-actions">
+        <button id="aboutOrfanatoBtn" class="about-btn-header">
+          🏫 Conheça o Orfanato
+        </button>
         <button id="soundToggle" class="icon-btn" title="Alternar Som" aria-label="Som">
           <span id="soundIcon">🔊</span>
         </button>
-        <a href="https://asilodevitoria.org.br/doacao/doe-um-pouquinho-transforme-o-ano-inteiro/" target="_blank" rel="noopener noreferrer" class="donate-btn-header">
+        <a href="https://obrasocialcristorei.org.br/doe/" target="_blank" rel="noopener noreferrer" class="donate-btn-header">
           ❤️ Doe Agora
         </a>
       </div>
@@ -41,9 +44,9 @@
       <section id="menuScreen" class="screen active">
         <div class="hero-card">
           <div class="hero-badge">Campanha Oficial de Apoio</div>
-          <h2>Espalhe Amor e Cuidados aos Idosos do Asilo de Vitória</h2>
+          <h2>Espalhe Amor e Cuidados aos Crianças da Obra Social Cristo Rei</h2>
           <p class="hero-description">
-            Ajude-nos a levar alimentação, medicamentos, agasalhos e muito afeto para nossos vovôs e vovÓs. Escolha um modo de jogo e faça parte dessa corrente!
+            Ajude-nos a levar alimentação, medicamentos, agasalhos e muito afeto para nossos crianças e adolescentes. Escolha um modo de jogo e faça parte dessa corrente!
           </p>
 
           <div class="game-modes">
@@ -57,22 +60,47 @@
             <div class="mode-card" id="startMemoryMode">
               <div class="mode-icon">🃏</div>
               <h3>Memórias de Afeto</h3>
-              <p>Encontre os pares de memórias e momentos felizes vividos diariamente pelos idosos no Asilo de Vitória.</p>
+              <p>Encontre os pares de memórias e momentos felizes vividos diariamente pelas crianças na Obra Social Cristo Rei.</p>
               <button class="play-btn secondary">Jogar Memórias ▶</button>
+            </div>
+          
+            <div class="mode-card" id="startJumpMode">
+              <div class="mode-icon">🏃</div>
+              <h3>Jornada da Vida</h3>
+              <p>Pule os obstáculos, cresça e se torne um cidadão de bem.</p>
+              <button class="play-btn" style="background: linear-gradient(135deg, #4A88B7 0%, #244C6A 100%);">Jogar Jornada ▶</button>
+            </div>
+          
+            <div class="mode-card" id="startBalloonMode">
+              <div class="mode-icon">🎈</div>
+              <h3>Balões dos Sonhos</h3>
+              <p>Estoure os balões que sobem e ajude a realizar os sonhos das nossas crianças.</p>
+              <button class="play-btn" style="background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%); color: #122B40;">Jogar Balões ▶</button>
             </div>
           </div>
 
           <div class="quick-donation-box">
             <h3>🤝 Seu gesto transforma vidas!</h3>
-            <p>O Asilo de Vitória atende dezenas de idosos em situação de vulnerabilidade com assistência 24h.</p>
+            <p>A Obra Social Cristo Rei atende dezenas de crianças em situação de vulnerabilidade com assistência 24h.</p>
             <div class="quick-donation-buttons">
-              <a href="https://asilodevitoria.org.br/doacao/doe-um-pouquinho-transforme-o-ano-inteiro/" target="_blank" class="btn-primary">
-                🎁 Doar Qualquer Valor no Site Oficial
+              <a href="https://obrasocialcristorei.org.br/doe/" target="_blank" class="btn-primary">
+                🎁 Doação Única no Site Oficial
               </a>
-              <button id="copyPixMenuBtn" class="btn-pix">
-                📋 Copiar Chave Pix Oficial
-              </button>
+              <a href="https://obrasocialcristorei.org.br/doe/" target="_blank" rel="noopener noreferrer" class="btn-recurring">
+                🔄 Doação Recorrente (Mensal)
+              </a>
             </div>
+          </div>
+
+          <div class="know-orfanato-card">
+            <div class="know-orfanato-content">
+              <span class="know-badge">🏛️ Mais de 80 Anos de História</span>
+              <h3>Conheça a Obra Social Cristo Rei</h3>
+              <p>Saiba mais sobre a missão de proporcionar dignidade, saúde e afeto à criança e adolescente no Espírito Santo.</p>
+            </div>
+            <a href="http://www.obrasocialcristorei.org.br" target="_blank" rel="noopener noreferrer" class="btn-visit-orfanato">
+              🌐 Visitar Portal Oficial ➔
+            </a>
           </div>
         </div>
       </section>
@@ -106,7 +134,7 @@
 
         <div class="game-controls">
           <button id="backToMenuBtn1" class="btn-secondary">🏠 Menu Principal</button>
-          <a href="https://asilodevitoria.org.br/doacao/doe-um-pouquinho-transforme-o-ano-inteiro/" target="_blank" class="btn-donate-inline">
+          <a href="https://obrasocialcristorei.org.br/doe/" target="_blank" class="btn-donate-inline">
             💖 Transforme seu jogo em doação real
           </a>
         </div>
@@ -138,6 +166,62 @@
           <button id="restartMemoryBtn" class="btn-secondary">🔄 Reiniciar</button>
         </div>
       </section>
+    
+      <!-- Tela do Jogo: Jornada da Vida -->
+      <section id="jumpGameScreen" class="screen">
+        <div class="hud">
+          <div class="hud-item">
+            <span class="hud-label">Pontos</span>
+            <span id="jumpScore" class="hud-value">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Fase da Vida</span>
+            <span id="jumpPhase" class="hud-value" style="font-size: 24px;">👶</span>
+          </div>
+        </div>
+
+        <div class="canvas-wrapper">
+          <canvas id="jumpCanvas" width="800" height="300" style="background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%); border: 3px solid #B0E2FF; border-radius: var(--radius-md); max-width: 100%; touch-action: none;"></canvas>
+          <div id="jumpInstructions" class="touch-instructions">
+            👆 Pressione <strong>ESPAÇO</strong> ou <strong>TOQUE NA TELA</strong> para pular
+          </div>
+        </div>
+
+        <div class="game-controls">
+          <button id="backToMenuBtn3" class="btn-secondary">🏠 Menu Principal</button>
+          <a href="https://obrasocialcristorei.org.br/doe/" target="_blank" class="btn-donate-inline">
+            💖 Doar Agora
+          </a>
+        </div>
+      </section>
+    
+      <!-- Tela do Jogo: Balões dos Sonhos -->
+      <section id="balloonGameScreen" class="screen">
+        <div class="hud">
+          <div class="hud-item">
+            <span class="hud-label">Sonhos Realizados</span>
+            <span id="balloonScore" class="hud-value">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Tempo</span>
+            <span id="balloonTime" class="hud-value" style="color: #E74C3C;">30s</span>
+          </div>
+        </div>
+
+        <div class="canvas-wrapper">
+          <canvas id="balloonCanvas" width="600" height="700" style="background: linear-gradient(180deg, #A1C4FD 0%, #C2E9FB 100%); border: 3px solid #8FD3F4; border-radius: var(--radius-md); max-width: 100%; touch-action: none;"></canvas>
+          <div class="touch-instructions">
+            👆 <strong>TOQUE</strong> nos balões antes que eles voem embora!
+          </div>
+        </div>
+
+        <div class="game-controls">
+          <button id="backToMenuBtn4" class="btn-secondary">🏠 Menu Principal</button>
+          <a href="https://obrasocialcristorei.org.br/doe/" target="_blank" class="btn-donate-inline">
+            💖 Apoiar Sonhos
+          </a>
+        </div>
+      </section>
     </main>
 
     <!-- Modal de Resultado / Doação -->
@@ -145,8 +229,8 @@
       <div class="modal-card">
         <div class="modal-header">
           <div id="resultBadgeIcon" class="result-badge-icon">🏆</div>
-          <h2 id="resultTitle">Parabéns, Amigo do Asilo!</h2>
-          <p id="resultSubtitle">Você encheu o dia dos nossos idosos de alegria!</p>
+          <h2 id="resultTitle">Parabéns, Amigo do Orfanato!</h2>
+          <p id="resultSubtitle">Você encheu o dia dos nossos crianças de alegria!</p>
         </div>
 
         <div class="result-body">
@@ -164,7 +248,7 @@
           <div class="impact-message-box">
             <h3>💌 A Sua Ajuda Faz Toda a Diferença</h3>
             <p id="impactText">
-              No Asilo de Vitória, cuidamos diariamente de idosos que precisam de alimentação balanceada, médicos, fisioterapia, medicamentos e muito afeto.
+              Na Obra Social Cristo Rei, cuidamos diariamente de crianças que precisam de alimentação balanceada, médicos, fisioterapia, medicamentos e muito afeto.
             </p>
           </div>
 
@@ -193,21 +277,72 @@
 
           <!-- Ações Finais do Modal -->
           <div class="modal-actions">
-            <a href="https://asilodevitoria.org.br/doacao/doe-um-pouquinho-transforme-o-ano-inteiro/" target="_blank" rel="noopener noreferrer" class="btn-donate-modal">
+            <a href="https://obrasocialcristorei.org.br/doe/" target="_blank" rel="noopener noreferrer" class="btn-donate-modal">
               ❤️ FAZER DOAÇÃO NO SITE OFICIAL
             </a>
             
             <div class="secondary-actions-row">
-              <button id="copyPixModalBtn" class="btn-pix-modal">
-                📋 Copiar Chave Pix
-              </button>
+              <a href="https://obrasocialcristorei.org.br/doe/" target="_blank" rel="noopener noreferrer" class="btn-recurring-modal">
+                🔄 Doação Recorrente (Mensal)
+              </a>
               <button id="shareWhatsAppBtn" class="btn-whatsapp-modal">
-                💬 Compartilhar no WhatsApp
+                💬 Compartilhar WhatsApp
               </button>
             </div>
 
             <button id="closeModalBtn" class="btn-restart-modal">
               🔄 Jogar Novamente
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Conheça o Orfanato -->
+    <div id="aboutOrfanatoModal" class="modal-overlay">
+      <div class="modal-card">
+        <div class="modal-header about-header">
+          <div class="result-badge-icon">🏛️</div>
+          <h2>Conheça a Obra Social Cristo Rei</h2>
+          <p>Tradição, Amor e Dignidade na Infância e Juventude</p>
+        </div>
+
+        <div class="result-body">
+          <div class="about-intro">
+            <p>
+              O <strong>Obra Social Cristo Rei</strong> é uma instituição filantrópica sem fins lucrativos dedicada ao acolhimento e assistência integral da criança e adolescente no Espírito Santo há mais de 80 anos.
+            </p>
+          </div>
+
+          <div class="about-highlights-grid">
+            <div class="highlight-item">
+              <div class="highlight-icon">🏡</div>
+              <h4>Moradia & Aconchego</h4>
+              <p>Ambiente familiar, seguro e estruturado para o bem-estar diário dos residentes.</p>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">🩺</div>
+              <h4>Saúde & Cuidados 24h</h4>
+              <p>Equipe multidisciplinar de enfermagem, médicos, fisioterapeutas e psicólogos.</p>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">🎨</div>
+              <h4>Lazer & Oficinas</h4>
+              <p>Artesanato, música, atividades cognitivas e comemorações com afeto.</p>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">🤝</div>
+              <h4>Voluntariado & Comunidade</h4>
+              <p>Apoio contínuo da sociedade para transformar a vida de cada criança.</p>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <a href="http://www.obrasocialcristorei.org.br" target="_blank" rel="noopener noreferrer" class="btn-donate-modal">
+              🌐 ACESSAR O PORTAL OFICIAL DA OBRA SOCIAL CRISTO REI
+            </a>
+            <button id="closeAboutModalBtn" class="btn-restart-modal">
+              ✖️ Voltar ao Jogo
             </button>
           </div>
         </div>
@@ -222,10 +357,10 @@
     <!-- Footer -->
     <footer class="footer">
       <p>
-        Jogo educativo e beneficente dedicado ao <strong>Asilo de Vitória</strong> (Espírito Santo).
+        Jogo educativo e beneficente dedicado ao <strong>Obra Social Cristo Rei</strong> (Espírito Santo).
       </p>
       <p>
-        Saiba mais e faça sua contribuição oficial em <a href="https://asilodevitoria.org.br/doacao/doe-um-pouquinho-transforme-o-ano-inteiro/" target="_blank">asilodevitoria.org.br</a>.
+        Saiba mais e faça sua contribuição oficial em <a href="https://obrasocialcristorei.org.br/doe/" target="_blank">obrasocialcristorei.org.br/doe/</a>.
       </p>
     </footer>
   </div>
